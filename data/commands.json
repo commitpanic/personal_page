@@ -1,0 +1,176 @@
+{
+  "commands": [
+    {
+      "name": "help",
+      "description": "Display all available commands",
+      "usage": "help",
+      "category": "general"
+    },
+    {
+      "name": "home",
+      "description": "Return to the welcome screen",
+      "usage": "home",
+      "category": "navigation"
+    },
+    {
+      "name": "about",
+      "description": "Learn more about me",
+      "usage": "about",
+      "category": "content"
+    },
+    {
+      "name": "contact",
+      "description": "Get my contact information",
+      "usage": "contact [-email -copy | -linkedin -copy/-open | -github -copy/-open/-repos/-clone | -qrz -copy/-open]",
+      "category": "content"
+    },
+    {
+      "name": "projects",
+      "description": "View my portfolio projects",
+      "usage": "projects",
+      "category": "content"
+    },
+    {
+      "name": "blog",
+      "description": "Read and search blog articles",
+      "usage": "blog [list | read <slug> | search <query> | tags | filter -tag <tag> | comments <id> | like <id>]",
+      "category": "content"
+    },
+    {
+      "name": "blog list",
+      "description": "List all blog articles with pagination",
+      "usage": "blog list [-page N]",
+      "category": "content"
+    },
+    {
+      "name": "blog read",
+      "description": "Read a specific blog article",
+      "usage": "blog read <slug>",
+      "category": "content"
+    },
+    {
+      "name": "blog search",
+      "description": "Search blog articles",
+      "usage": "blog search <query>",
+      "category": "content"
+    },
+    {
+      "name": "blog filter",
+      "description": "Filter articles by tag",
+      "usage": "blog filter -tag <tag>",
+      "category": "content"
+    },
+    {
+      "name": "blog comments",
+      "description": "View comments on an article",
+      "usage": "blog comments <articleId>",
+      "category": "content"
+    },
+    {
+      "name": "blog comment",
+      "description": "Add a comment to an article",
+      "usage": "blog comment <articleId> \"name\" email \"text\"",
+      "category": "content"
+    },
+    {
+      "name": "blog like",
+      "description": "Toggle like on an article",
+      "usage": "blog like <articleId>",
+      "category": "content"
+    },
+    {
+      "name": "blog reactions",
+      "description": "View all reactions on an article",
+      "usage": "blog reactions <articleId>",
+      "category": "content"
+    },
+    {
+      "name": "blog new",
+      "description": "Create a new blog article (admin only)",
+      "usage": "blog new \"title\" \"excerpt\" \"content\" [-tags tag1,tag2] [-publish]",
+      "category": "content",
+      "requiresAdmin": true
+    },
+    {
+      "name": "blog edit",
+      "description": "Edit an existing blog article (admin only)",
+      "usage": "blog edit <id> \"title\" \"excerpt\" \"content\" [-tags tag1,tag2] [-publish]",
+      "category": "content",
+      "requiresAdmin": true
+    },
+    {
+      "name": "blog delete",
+      "description": "Delete a blog article (admin only)",
+      "usage": "blog delete <id>",
+      "category": "content",
+      "requiresAdmin": true
+    },
+    {
+      "name": "admin",
+      "description": "Admin commands for moderation",
+      "usage": "admin [comments pending | comment approve/reject <id> | messages | message read/archive <id>]",
+      "category": "general",
+      "requiresAdmin": true
+    },
+    {
+      "name": "send",
+      "description": "Send me a message via contact form",
+      "usage": "send <name> <email> <message>",
+      "category": "content"
+    },
+    {
+      "name": "version",
+      "description": "Show application version",
+      "usage": "version",
+      "category": "general"
+    },
+    {
+      "name": "clear",
+      "description": "Clear the terminal screen",
+      "usage": "clear",
+      "category": "general"
+    },
+    {
+      "name": "customize",
+      "description": "Customize terminal color theme",
+      "usage": "customize -color [-default | -white | -red | -yellow]",
+      "category": "general"
+    },
+    {
+      "name": "login",
+      "description": "Sign in to your account",
+      "usage": "login <username> <password>",
+      "category": "auth"
+    },
+    {
+      "name": "register",
+      "description": "Register a new account",
+      "usage": "register <username> <email> <password>",
+      "category": "auth"
+    },
+    {
+      "name": "logout",
+      "description": "Sign out from your account",
+      "usage": "logout",
+      "category": "auth"
+    },
+    {
+      "name": "whoami",
+      "description": "Display current logged in user",
+      "usage": "whoami",
+      "category": "auth"
+    },
+    {
+      "name": "forgot-password",
+      "description": "Request password reset email",
+      "usage": "forgot-password <email>",
+      "category": "auth"
+    },
+    {
+      "name": "reset-password",
+      "description": "Reset password with token from email",
+      "usage": "reset-password <token> <new-password>",
+      "category": "auth"
+    }
+  ]
+}

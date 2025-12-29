@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Terminal Personal Page",
+      "description": "An interactive portfolio website designed as a terminal interface",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+      "link": "https://github.com/yourusername/terminal-portfolio",
+      "gitUrl": "https://github.com/yourusername/terminal-portfolio.git",
+      "status": "In Development"
+    },
+    {
+      "id": 2,
+      "name": "Project Name 2",
+      "description": "Description of your second project",
+      "technologies": ["React", "Node.js", "MongoDB"],
+      "link": "https://github.com/yourusername/project2",
+      "gitUrl": "https://github.com/yourusername/project2.git",
+      "status": "Completed"
+    },
+    {
+      "id": 3,
+      "name": "Project Name 3",
+      "description": "Description of your third project",
+      "technologies": ["Vue.js", "Firebase", "TypeScript"],
+      "link": "https://github.com/yourusername/project3",
+      "gitUrl": "https://github.com/yourusername/project3.git",
+      "status": "Completed"
+    }
+  ]
+}
