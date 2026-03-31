@@ -21,13 +21,19 @@
     {
       "name": "contact",
       "description": "Get my contact information",
-      "usage": "contact [-email -copy | -linkedin -copy/-open | -github -copy/-open/-repos/-clone | -qrz -copy/-open]",
+      "usage": "contact [-email -copy | -linkedin -copy/-open | -github -copy/-open | -qrz -copy/-open]",
       "category": "content"
     },
     {
       "name": "projects",
-      "description": "View my portfolio projects",
+      "description": "View links to my live sites",
       "usage": "projects",
+      "category": "content"
+    },
+    {
+      "name": "qrz",
+      "description": "Sync QRZ logs and generate map/embed",
+      "usage": "qrz [status | sync | logs | map | iframe]",
       "category": "content"
     },
     {
@@ -162,15 +168,45 @@
     },
     {
       "name": "forgot-password",
-      "description": "Request password reset email",
+      "description": "Generate password reset token",
       "usage": "forgot-password <email>",
       "category": "auth"
     },
     {
       "name": "reset-password",
-      "description": "Reset password with token from email",
+      "description": "Reset password with generated token",
       "usage": "reset-password <token> <new-password>",
       "category": "auth"
+    },
+    {
+      "name": "snake",
+      "description": "Play the classic Snake game",
+      "usage": "snake",
+      "category": "game"
+    },
+    {
+      "name": "tetris",
+      "description": "Play the classic Tetris puzzle game",
+      "usage": "tetris",
+      "category": "game"
+    },
+    {
+      "name": "2048",
+      "description": "Play the popular 2048 number puzzle",
+      "usage": "2048",
+      "category": "game"
+    },
+    {
+      "name": "minesweeper",
+      "description": "Play the classic Minesweeper puzzle game",
+      "usage": "minesweeper",
+      "category": "game"
+    },
+    {
+      "name": "invaders",
+      "description": "Play Space Invaders arcade game",
+      "usage": "invaders",
+      "category": "game"
     }
   ]
 }

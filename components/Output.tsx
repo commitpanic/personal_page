@@ -43,9 +43,17 @@ export default function Output({ output, username, colorTheme = 'green' }: Outpu
         </div>
       )}
       {output.output && (
-        <pre className={`whitespace-pre-wrap ${getTextColor()} leading-relaxed`}>
-          {output.output}
-        </pre>
+        <>
+          {typeof output.output === 'string' ? (
+            <pre className={`whitespace-pre-wrap ${getTextColor()} leading-relaxed`}>
+              {output.output}
+            </pre>
+          ) : (
+            <div className={getTextColor()}>
+              {output.output}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

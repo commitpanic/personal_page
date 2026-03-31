@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react';
+
 export interface Command {
   name: string;
   description: string;
@@ -10,7 +12,7 @@ export interface Command {
 export interface CommandOutput {
   id: string;
   command: string;
-  output: string | JSX.Element;
+  output: string | ReactElement;
   timestamp: Date;
   type: 'success' | 'error' | 'info';
 }

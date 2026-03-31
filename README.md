@@ -20,6 +20,20 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Terminal Features
+
+This personal page features a retro terminal interface with various commands:
+
+### Games
+- **snake** - Play the classic Snake game! Use arrow keys or WASD to move, P/Space to pause, ESC to quit. High scores are saved locally.
+- **tetris** - Play Tetris! Arrow keys or WASD to move, Up/W to rotate, Space for hard drop, P to pause.
+- **2048** - The popular number puzzle! Use arrow keys or WASD to slide tiles and combine numbers to reach 2048.
+- **minesweeper** - Classic puzzle game! Left click to reveal, right click to flag mines. Try to clear the board without hitting a mine.
+- **invaders** - Space Invaders arcade game! Move with arrow keys or A/D, Space to shoot, P to pause.
+
+### Other Commands
+Type `help` in the terminal to see all available commands including blog, projects, contact, and more.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

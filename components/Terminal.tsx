@@ -1,10 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { useState, useRef, useEffect, KeyboardEvent, type ReactElement } from 'react';
 import { executeCommand, executeAsyncCommand } from '@/helpers/commandParser';
 import { useAuth } from '@/hooks/useAuth';
 import type { CommandOutput } from '@/types/command';
 import Output from './Output';
+import SnakeGame from './SnakeGame';
+import TetrisGame from './TetrisGame';
+import Game2048 from './Game2048';
+import MinesweeperGame from './MinesweeperGame';
+import SpaceInvadersGame from './SpaceInvadersGame';
 
 type ColorTheme = 'green' | 'white' | 'red' | 'yellow';
 
@@ -15,6 +20,8 @@ export default function Terminal() {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const { username, refreshAuth } = useAuth();
   const [colorTheme, setColorTheme] = useState<ColorTheme>('green');
+  const [activeGame, setActiveGame] = useState<string | null>(null);
+  const [currentGameId, setCurrentGameId] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -61,6 +68,95 @@ export default function Terminal() {
     if (!input.trim()) return;
 
     const result = executeCommand(input, username);
+    
+    // Helper function to create game output
+    const createGameOutput = (
+      gameName: string, 
+      gameComponent: ReactElement
+    ) => {
+      const gameId = Date.now().toString();
+      setActiveGame(gameName);
+      setCurrentGameId(gameId);
+      const newOutput: CommandOutput = {
+        id: gameId,
+        command: input,
+        output: gameComponent,
+        timestamp: new Date(),
+        type: 'success'
+      };
+      setOutputs(prev => [...prev, newOutput]);
+      setHistory(prev => [...prev, input]);
+      setHistoryIndex(-1);
+      setInput('');
+    };
+
+    const closeGame = (finalMessage?: string) => {
+      setActiveGame(null);
+      // Replace the game component with the close message
+      if (currentGameId && finalMessage) {
+        setOutputs(prev => prev.map(out => 
+          out.id === currentGameId 
+            ? { ...out, output: finalMessage }
+            : out
+        ));
+      }
+      setCurrentGameId(null);
+    };
+    
+    // Handle snake game command
+    if (result.output === '__SNAKE__') {
+      createGameOutput('snake', 
+        <SnakeGame 
+          onGameOver={(score) => closeGame(`Game Over! Final Score: ${score}`)}
+          onClose={() => closeGame('Snake game closed.')}
+        />
+      );
+      return;
+    }
+
+    // Handle tetris game command
+    if (result.output === '__TETRIS__') {
+      createGameOutput('tetris',
+        <TetrisGame 
+          onGameOver={(score) => closeGame(`Game Over! Final Score: ${score}`)}
+          onClose={() => closeGame('Tetris closed.')}
+        />
+      );
+      return;
+    }
+
+    // Handle 2048 game command
+    if (result.output === '__2048__') {
+      createGameOutput('2048',
+        <Game2048 
+          onGameOver={(score) => closeGame(`Game Over! Final Score: ${score}`)}
+          onClose={() => closeGame('2048 closed.')}
+        />
+      );
+      return;
+    }
+
+    // Handle minesweeper game command
+    if (result.output === '__MINESWEEPER__') {
+      createGameOutput('minesweeper',
+        <MinesweeperGame 
+          onGameOver={(time) => closeGame(`Game Over! Time: ${time}s`)}
+          onClose={() => closeGame('Minesweeper closed.')}
+        />
+      );
+      return;
+    }
+
+    // Handle space invaders game command
+    if (result.output === '__INVADERS__') {
+      createGameOutput('invaders',
+        <SpaceInvadersGame 
+          onGameOver={(score) => closeGame(`Game Over! Final Score: ${score}`)}
+          onClose={() => closeGame('Space Invaders closed.')}
+        />
+      );
+      return;
+    }
     
     // Handle async commands
     if (result.output.startsWith('__ASYNC__')) {
@@ -181,6 +277,12 @@ export default function Terminal() {
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    // Disable keyboard input when any game is active
+    if (activeGame) {
+      e.preventDefault();
+      return;
+    }
+    
     if (e.key === 'Enter') {
       handleSubmit();
     } else if (e.key === 'ArrowUp') {

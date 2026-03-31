@@ -413,3 +413,35 @@ export const reactionsAPI = {
     return handleResponse<{ success: boolean; message: string }>(response);
   }
 };
+
+export const qrzAPI = {
+  syncNow: async () => {
+    const token = authAPI.getToken();
+    const response = await fetch(`${API_BASE_URL}/qrz/sync`, {
+      method: 'POST',
+      headers: token ? { 'Authorization': `Bearer ${token}` } : undefined
+    });
+    const result = await handleResponse<{ success: boolean; message: string; data: any }>(response);
+    return result.data;
+  },
+
+  getStatus: async () => {
+    const response = await fetch(`${API_BASE_URL}/qrz/status`);
+    const result = await handleResponse<{ success: boolean; data: any }>(response);
+    return result.data;
+  },
+
+  getLogs: async () => {
+    const response = await fetch(`${API_BASE_URL}/qrz/logs`);
+    const result = await handleResponse<{ success: boolean; data: { count: number; logs: any[] } }>(response);
+    return result.data;
+  },
+
+  getEmbedCode: async () => {
+    const response = await fetch(`${API_BASE_URL}/qrz/map/embed-code`);
+    const result = await handleResponse<{ success: boolean; data: { iframe: string } }>(response);
+    return result.data.iframe;
+  },
+
+  getMapEmbedUrl: () => `${API_BASE_URL}/qrz/map/embed`
+};
